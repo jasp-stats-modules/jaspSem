@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2026-01-24 03:12\n"
+"POT-Creation-Date: 2026-02-21 03:26\n"
 "PO-Revision-Date: 2025-06-22 22:02+0000\n"
 "Last-Translator: Koen Derks <koen-derks@hotmail.com>\n"
 "Language-Team: Dutch <https://hosted.weblate.org/projects/jasp/jaspsem-r/nl/"
@@ -531,24 +531,12 @@ msgstr "Schatting mislukt Melding: %s"
 msgid "Estimation failed! Message: Model %s did not converge!"
 msgstr "Schatting mislukt! Bericht: Model %s convergeert niet!"
 
-msgid "Model fit"
+#, fuzzy
+msgid "Model Fit"
 msgstr "Model passing"
 
 msgid "Group"
 msgstr "Groep"
-
-msgid "n"
-msgstr "n"
-
-msgid "Baseline test"
-msgstr "Baseline test"
-
-msgid "Difference test"
-msgstr "Verschillen test"
-
-#, fuzzy
-msgid "Model Fit"
-msgstr "Model passing"
 
 msgid "Distance Measure"
 msgstr ""
@@ -771,6 +759,9 @@ msgstr "Schatting mislukt! Bericht: Model %s convergeert niet!"
 msgid "Estimation failed! Message: %s has negative degrees of freedom."
 msgstr "Schatting mislukt! Bericht: Model %s heeft negatieve vrijheidsgraden."
 
+msgid "Model fit"
+msgstr "Model passing"
+
 msgid "n(Observations)"
 msgstr "n(Observaties)"
 
@@ -782,6 +773,12 @@ msgstr "n(Parameters)"
 
 msgid "Free"
 msgstr "Vrij"
+
+msgid "Baseline test"
+msgstr "Baseline test"
+
+msgid "Difference test"
+msgstr "Verschillen test"
 
 msgid "%1$sdf"
 msgstr "%1$sdf"
@@ -1037,11 +1034,6 @@ msgstr "Gevoeligheids-parameter"
 msgid "Path diagram"
 msgstr "Paddiagram"
 
-msgid ""
-"Model plot not available when there is at least one exogenous covariate and "
-"the 'Exogenous covariate(s) fixed' box is checked."
-msgstr ""
-
 msgid "Satorra-Bentler"
 msgstr ""
 
@@ -1078,6 +1070,9 @@ msgstr ""
 
 msgid "first-order"
 msgstr ""
+
+#~ msgid "n"
+#~ msgstr "n"
 
 #~ msgid ""
 #~ "When mean structure is included, at least one of the checkboxes to fix "

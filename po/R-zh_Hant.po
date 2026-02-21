@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspSem 0.15.0\n"
-"POT-Creation-Date: 2026-01-24 03:12\n"
+"POT-Creation-Date: 2026-02-21 03:26\n"
 "PO-Revision-Date: 2025-10-06 19:56+0000\n"
 "Last-Translator: 陳寬裕 <pf.kuan.yu.chen@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -508,24 +508,12 @@ msgstr "估計失敗。訊息:%s"
 msgid "Estimation failed! Message: Model %s did not converge!"
 msgstr "估計失敗。訊息:模型%s無法收斂!"
 
-msgid "Model fit"
+#, fuzzy
+msgid "Model Fit"
 msgstr "模型配適"
 
 msgid "Group"
 msgstr "群"
-
-msgid "n"
-msgstr "n"
-
-msgid "Baseline test"
-msgstr "模型檢定"
-
-msgid "Difference test"
-msgstr "差異檢定"
-
-#, fuzzy
-msgid "Model Fit"
-msgstr "模型配適"
 
 msgid "Distance Measure"
 msgstr ""
@@ -729,6 +717,9 @@ msgstr "估計失敗。訊息:模型%s無法收斂！"
 msgid "Estimation failed! Message: %s has negative degrees of freedom."
 msgstr "估計失敗!訊息:模型%s的自由度為負值。"
 
+msgid "Model fit"
+msgstr "模型配適"
+
 msgid "n(Observations)"
 msgstr "樣本數"
 
@@ -740,6 +731,12 @@ msgstr "參數個數"
 
 msgid "Free"
 msgstr "自由參數"
+
+msgid "Baseline test"
+msgstr "模型檢定"
+
+msgid "Difference test"
+msgstr "差異檢定"
 
 msgid "%1$sdf"
 msgstr "%1$s自由度"
@@ -973,12 +970,6 @@ msgstr "敏感性參數"
 msgid "Path diagram"
 msgstr "路徑圖"
 
-#, fuzzy
-msgid ""
-"Model plot not available when there is at least one exogenous covariate and "
-"the 'Exogenous covariate(s) fixed' box is checked."
-msgstr "當條件估計是基於外衍共變數時，必須勾選「固定外衍共變數」。"
-
 msgid "Satorra-Bentler"
 msgstr ""
 
@@ -1011,6 +1002,15 @@ msgstr "穩健 Huber-White"
 
 msgid "first-order"
 msgstr "一階"
+
+#~ msgid "n"
+#~ msgstr "n"
+
+#, fuzzy
+#~ msgid ""
+#~ "Model plot not available when there is at least one exogenous covariate "
+#~ "and the 'Exogenous covariate(s) fixed' box is checked."
+#~ msgstr "當條件估計是基於外衍共變數時，必須勾選「固定外衍共變數」。"
 
 #~ msgid ""
 #~ "When mean structure is included, at least one of the checkboxes to fix "

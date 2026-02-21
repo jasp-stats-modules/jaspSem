@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspSem 0.95.0\n"
-"POT-Creation-Date: 2026-01-24 03:12\n"
+"POT-Creation-Date: 2026-02-21 03:26\n"
 "PO-Revision-Date: 2025-10-20 06:17+0000\n"
 "Last-Translator: Gabija Vaitkevičiūtė <gabija.vaitkev@gmail.com>\n"
 "Language-Team: Lithuanian <https://hosted.weblate.org/projects/jasp/jaspsem-"
@@ -487,22 +487,10 @@ msgstr ""
 msgid "Estimation failed! Message: Model %s did not converge!"
 msgstr ""
 
-msgid "Model fit"
-msgstr "Modelio tinkamumas"
+msgid "Model Fit"
+msgstr ""
 
 msgid "Group"
-msgstr ""
-
-msgid "n"
-msgstr ""
-
-msgid "Baseline test"
-msgstr ""
-
-msgid "Difference test"
-msgstr ""
-
-msgid "Model Fit"
 msgstr ""
 
 msgid "Distance Measure"
@@ -703,6 +691,9 @@ msgstr ""
 msgid "Estimation failed! Message: %s has negative degrees of freedom."
 msgstr ""
 
+msgid "Model fit"
+msgstr "Modelio tinkamumas"
+
 msgid "n(Observations)"
 msgstr ""
 
@@ -713,6 +704,12 @@ msgid "n(Parameters)"
 msgstr ""
 
 msgid "Free"
+msgstr ""
+
+msgid "Baseline test"
+msgstr ""
+
+msgid "Difference test"
 msgstr ""
 
 msgid "%1$sdf"
@@ -944,11 +941,6 @@ msgid "Sensitivity parameter"
 msgstr ""
 
 msgid "Path diagram"
-msgstr ""
-
-msgid ""
-"Model plot not available when there is at least one exogenous covariate and "
-"the 'Exogenous covariate(s) fixed' box is checked."
 msgstr ""
 
 msgid "Satorra-Bentler"

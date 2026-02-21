@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2026-01-24 03:12\n"
+"POT-Creation-Date: 2026-02-21 03:26\n"
 "PO-Revision-Date: 2026-01-28 10:47+0000\n"
 "Last-Translator: Wendel Paulo Silvestre <wpsilvestre@ucs.br>\n"
 "Language-Team: Portuguese <https://hosted.weblate.org/projects/jasp/jaspsem-"
@@ -513,23 +513,11 @@ msgstr "Mensagem de falha da estimação: %s"
 msgid "Estimation failed! Message: Model %s did not converge!"
 msgstr "A estimação falhou! Mensagem: O modelo %s não convergiu!"
 
-msgid "Model fit"
-msgstr "Ajuste do modelo"
+msgid "Model Fit"
+msgstr "Ajuste do Modelo"
 
 msgid "Group"
 msgstr "Grupo"
-
-msgid "n"
-msgstr "n"
-
-msgid "Baseline test"
-msgstr "Teste de linha de base"
-
-msgid "Difference test"
-msgstr "Teste de diferença"
-
-msgid "Model Fit"
-msgstr "Ajuste do Modelo"
 
 msgid "Distance Measure"
 msgstr "Medida de Distância"
@@ -744,6 +732,9 @@ msgstr "A estimação falhou! Mensagem: %s não convergiu!"
 msgid "Estimation failed! Message: %s has negative degrees of freedom."
 msgstr "A estimação falhou! Mensagem: %s tem graus de liberdade negativos."
 
+msgid "Model fit"
+msgstr "Ajuste do modelo"
+
 msgid "n(Observations)"
 msgstr "n(Observações)"
 
@@ -755,6 +746,12 @@ msgstr "n(Parâmetros)"
 
 msgid "Free"
 msgstr "Livre"
+
+msgid "Baseline test"
+msgstr "Teste de linha de base"
+
+msgid "Difference test"
+msgstr "Teste de diferença"
 
 msgid "%1$sdf"
 msgstr "%1$sgl"
@@ -1005,13 +1002,6 @@ msgstr "Parâmetro de sensibilidade"
 msgid "Path diagram"
 msgstr "Diagrama de caminhos"
 
-msgid ""
-"Model plot not available when there is at least one exogenous covariate and "
-"the 'Exogenous covariate(s) fixed' box is checked."
-msgstr ""
-"O gráfico do modelo não está disponível quando há pelo menos uma covariável "
-"exógena e a caixa 'Covariável(is) exógena(s) fixa(s)' está marcada."
-
 msgid "Satorra-Bentler"
 msgstr "Satorra-Bentler"
 
@@ -1044,6 +1034,17 @@ msgstr "Huber-White robusto"
 
 msgid "first-order"
 msgstr "primeira ordem"
+
+#~ msgid "n"
+#~ msgstr "n"
+
+#~ msgid ""
+#~ "Model plot not available when there is at least one exogenous covariate "
+#~ "and the 'Exogenous covariate(s) fixed' box is checked."
+#~ msgstr ""
+#~ "O gráfico do modelo não está disponível quando há pelo menos uma "
+#~ "covariável exógena e a caixa 'Covariável(is) exógena(s) fixa(s)' está "
+#~ "marcada."
 
 #~ msgid ""
 #~ "When mean structure is included, at least one of the checkboxes to fix "
