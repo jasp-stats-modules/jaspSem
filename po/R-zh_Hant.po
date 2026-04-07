@@ -511,7 +511,7 @@ msgid "Model selection criteria could not be computed: %s"
 msgstr "無法計算模型選擇準則：%s"
 
 msgid "Model selection criteria could not be computed for group %1$s: %2$s"
-msgstr "無法計算群組 %1$s 的模型選擇準則：%2$"
+msgstr "無法計算群組 %1$s 的模型選擇準則：%2$s"
 
 msgid "At least one result is inadmissible."
 msgstr "至少有一個結果不可採用。"
