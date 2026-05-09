@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspSem 0.15.0\n"
-"POT-Creation-Date: 2026-02-21 03:26\n"
+"POT-Creation-Date: 2026-05-09 03:54\n"
 "PO-Revision-Date: 2026-04-21 05:09+0000\n"
 "Last-Translator: 陳正昌 <chencc99@gmail.com>\n"
 "Language-Team: Chinese (Traditional Han script) <https://hosted.weblate.org/"
@@ -13,8 +13,17 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 5.17.1-dev\n"
 
-msgid "Fit indices"
+#, fuzzy
+msgid "Fit Indices"
 msgstr "配適指標"
+
+msgid ""
+"Detailed model fit indices. Includes incremental fit indices (CFI, TLI, NFI) "
+"comparing the model to the independence model, parsimony-adjusted indices, "
+"the RMSEA with confidence interval and close-fit test, SRMR, and information "
+"criteria (AIC, BIC, log-likelihood). CFI and TLI values above 0.95, RMSEA "
+"below 0.06, and SRMR below 0.08 suggest good fit."
+msgstr ""
 
 msgid "Index"
 msgstr "指標"
@@ -105,8 +114,32 @@ msgstr "此模型無法估計: 迭代結果無法收斂。"
 msgid "The model could not be estimated: No degrees of freedom left."
 msgstr "此模型無法估計: 自由度不足。"
 
-msgid "Chi-square test"
+#, fuzzy
+msgid "Chi-Square Test"
 msgstr "卡方檢定"
+
+msgid ""
+"Chi-square goodness-of-fit test comparing the growth curve model to the "
+"baseline (independence) model. A non-significant p-value for the growth "
+"curve model suggests adequate fit to the data."
+msgstr ""
+
+#, fuzzy
+msgid "Model"
+msgstr "模型配適"
+
+msgid "df"
+msgstr "自由度"
+
+msgid "p"
+msgstr "p"
+
+#, fuzzy
+msgid "Model Fit"
+msgstr "模型配適"
+
+msgid "Model fit statistics for the latent growth curve model."
+msgstr ""
 
 msgid "Baseline model"
 msgstr "基準模型"
@@ -120,8 +153,13 @@ msgstr "此模型無法執行： %s"
 msgid "Warning."
 msgstr "警告."
 
-msgid "Parameter estimates"
+msgid "Parameter Estimates"
 msgstr "參數估計值"
+
+msgid ""
+"Parameter estimates for the latent growth curve model, including growth "
+"factor means, variances, covariances, and regression coefficients."
+msgstr ""
 
 msgid "Std. estimate"
 msgstr "標準化估計值"
@@ -129,20 +167,28 @@ msgstr "標準化估計值"
 msgid "Estimate"
 msgstr "估計值"
 
+#, fuzzy
+msgid "Latent Curve"
+msgstr "潛在"
+
+msgid ""
+"Means and variances of the latent growth factors (e.g., intercept, slope). "
+"The intercept mean represents the average starting level, the slope mean the "
+"average rate of change, and their variances reflect individual differences "
+"in starting level and change."
+msgstr ""
+
 msgid "Component"
 msgstr "成分"
 
 msgid "Parameter"
 msgstr "參數"
 
-msgid "Std. error"
+msgid "Std. Error"
 msgstr "標準誤"
 
 msgid "z-value"
 msgstr "z值"
-
-msgid "p"
-msgstr "p"
 
 msgid "Lower"
 msgstr "下界"
@@ -150,11 +196,41 @@ msgstr "下界"
 msgid "%s%% Confidence Interval"
 msgstr "%s%% 信賴區間"
 
-msgid "Latent covariances"
+msgid "Upper"
+msgstr "上界"
+
+#, fuzzy
+msgid "Latent Covariances"
 msgstr "潛在共變數"
+
+msgid ""
+"Covariances between latent growth factors. For example, a positive intercept-"
+"slope covariance indicates that individuals with higher starting values tend "
+"to show steeper change over time."
+msgstr ""
+
+#, fuzzy
+msgid "Regressions"
+msgstr "迴歸係數"
+
+msgid ""
+"Regression coefficients of covariates predicting the latent growth factors. "
+"These show how external variables relate to individual differences in "
+"initial level and rate of change."
+msgstr ""
 
 msgid "Predictor"
 msgstr "預測變項"
+
+#, fuzzy
+msgid "Residual Variances"
+msgstr "殘差變異數"
+
+msgid ""
+"Time-specific residual variances of the observed variables. These represent "
+"measurement error plus occasion-specific variance not captured by the growth "
+"factors. Negative values may indicate model misspecification."
+msgstr ""
 
 msgid "Variable"
 msgstr "變項"
@@ -184,19 +260,56 @@ msgstr "殘差變異數為負值,此模型可能設定有誤."
 msgid "R-Squared"
 msgstr "R平方"
 
-msgid "Implied covariance matrix"
+msgid ""
+"Proportion of variance in each observed variable at each time point "
+"explained by the latent growth factors."
+msgstr ""
+
+#, fuzzy
+msgid "Implied Covariance Matrix"
 msgstr "模式隱含之共變數矩陣"
 
-msgid "Residual covariance matrix"
+msgid "Model-implied covariance matrix from the latent growth curve model."
+msgstr ""
+
+#, fuzzy
+msgid "Residual Covariance Matrix"
 msgstr "殘差共變數矩陣"
 
-msgid "Curve plot"
+msgid ""
+"Difference between the observed and model-implied covariance matrices. Small "
+"residuals indicate the growth curve model adequately reproduces the observed "
+"covariances."
+msgstr ""
+
+#, fuzzy
+msgid "Curve Plot"
 msgstr "曲線圖"
 
-msgid "Model plot"
+msgid ""
+"Individual predicted growth trajectories over time. Each line represents a "
+"participant's estimated trajectory based on the latent growth factors."
+msgstr ""
+
+#, fuzzy
+msgid "Model Plot"
 msgstr "模型圖"
 
-msgid "Misfit plot"
+msgid ""
+"Path diagram of the latent growth curve model showing the growth factors, "
+"their loadings on observed time points, and any covariates."
+msgstr ""
+
+msgid "Model Syntax"
+msgstr "模型的 Lavaan 程式碼"
+
+msgid ""
+"The lavaan model syntax for the growth curve model, showing fixed factor "
+"loadings that define the growth trajectory shape."
+msgstr ""
+
+#, fuzzy
+msgid "Misfit Plot"
 msgstr "不適配 (misfit) 圖"
 
 msgid "Curve + variance + uncertainty"
@@ -237,23 +350,65 @@ msgstr ""
 msgid "Estimation failed"
 msgstr "估計失敗"
 
+msgid ""
+"Parameter estimates from the mediation model, organized by direct effects, "
+"indirect effects, and total effects."
+msgstr ""
+
 msgid "Direct effects"
 msgstr "直接效果"
 
-msgid "Upper"
-msgstr "上界"
+msgid ""
+"Direct effects of predictors on outcomes, bypassing all mediators (the c or "
+"c' path). A significant direct effect indicates that the predictor "
+"influences the outcome independently of the mediation pathway."
+msgstr ""
 
 msgid "Indirect effects"
 msgstr "間接效果"
 
+msgid ""
+"Indirect effects of predictors on outcomes transmitted through mediators. "
+"Each indirect effect is the product of the path coefficients along the "
+"mediation pathway (a × b). A significant indirect effect indicates that "
+"mediation occurs through that pathway."
+msgstr ""
+
+msgid "Total Effects"
+msgstr "總效果"
+
+msgid ""
+"Total effects combining the direct effect and all indirect effects for each "
+"predictor-outcome pair. The total effect equals the sum of the direct and "
+"indirect effects (c = c' + a × b)."
+msgstr ""
+
 msgid "Total indirect effects"
 msgstr "所有間接效果"
+
+msgid ""
+"Total indirect effects summed across all mediators for each predictor-"
+"outcome pair. When there are multiple mediators, this gives the combined "
+"strength of all indirect pathways."
+msgstr ""
 
 msgid "Residual covariances"
 msgstr "殘差共變數"
 
+msgid ""
+"Estimated residual covariances between endogenous variables (mediators and "
+"outcomes). These represent shared variance not accounted for by the model's "
+"directed paths."
+msgstr ""
+
 msgid "Path coefficients"
 msgstr "路徑係數"
+
+msgid ""
+"Individual path coefficients in the mediation model. These include the a "
+"paths (predictor to mediator) and b paths (mediator to outcome), which "
+"constitute the building blocks of indirect effects."
+msgstr ""
 
 msgid "Estimator is %s."
 msgstr "估計法為 %s。"
@@ -263,8 +418,19 @@ msgid ""
 msgstr ""
 "%1$s 並非所有拔靴法樣本皆分析成功: 信賴區間是基於 %2$.0f 的樣本分析結果。"
 
-msgid "Path plot"
+msgid ""
+"Proportion of variance in each mediator and outcome variable explained by "
+"its predictors in the mediation model."
+msgstr ""
+
+#, fuzzy
+msgid "Path Plot"
 msgstr "路徑圖"
+
+msgid ""
+"Visual representation of the mediation model showing predictors, mediators, "
+"outcomes, directed paths, and (optionally) parameter estimates."
+msgstr ""
 
 msgid ""
 "Currently it is not possible to plot mediation models with ordinal "
@@ -279,6 +445,12 @@ msgstr "無法產生圖形。錯誤訊息後所列之語法有誤: %s"
 msgid "Model syntax"
 msgstr "模型的 Lavaan 程式碼"
 
+msgid ""
+"The lavaan model syntax automatically generated from the mediation analysis "
+"specification. This shows the exact model fitted, including labeled direct "
+"and indirect effect parameters."
+msgstr ""
+
 msgid "FIML only available with ML-type estimators."
 msgstr "只有使用最大概似法 (ML)類估計法時才提供完全訊息最大概似法(FIML)功能。"
 
@@ -287,8 +459,11 @@ msgid ""
 "different estimator or specify an other MIMIC model."
 msgstr "估計失敗！訊息：模型無法收斂。試使用其他估計法，或改用其他MIMIC模型。"
 
-msgid "df"
-msgstr "自由度"
+msgid ""
+"Chi-square goodness-of-fit test for the MIMIC model. Both the baseline "
+"(independence) model and the factor model with predictors are shown. A non-"
+"significant chi-square for the factor model indicates adequate fit."
+msgstr ""
 
 msgid "&#967;&sup2;"
 msgstr "&#967;&sup2;"
@@ -296,17 +471,51 @@ msgstr "&#967;&sup2;"
 msgid "Factor model"
 msgstr "因素模型"
 
+msgid ""
+"Parameter estimates for the MIMIC (Multiple Indicators, Multiple Causes) "
+"model. The model has observed predictors influencing a latent variable, "
+"which in turn is measured by observed indicators."
+msgstr ""
+
 msgid "Predictor coefficients"
 msgstr "預測變數係數"
+
+msgid ""
+"Regression coefficients of the observed predictor (cause) variables on the "
+"latent variable. These represent the direct effects of each predictor on the "
+"latent construct."
+msgstr ""
 
 msgid "Indicator coefficients"
 msgstr "指標係數"
 
+msgid ""
+"Factor loadings of the latent variable on its observed indicators. These "
+"represent how strongly each indicator reflects the underlying latent "
+"construct."
+msgstr ""
+
 msgid "Indicator"
 msgstr "指標"
 
+msgid ""
+"Proportion of variance explained in the latent variable (by the predictors) "
+"and in each indicator (by the latent variable)."
+msgstr ""
+
+msgid ""
+"Path diagram of the MIMIC model showing observed predictors (causes), the "
+"latent variable, and its observed indicators."
+msgstr ""
+
 msgid "Model plot not available with ordinal variables"
 msgstr "使用次序變數分析時，無法提供模型圖"
+
+msgid ""
+"The lavaan model syntax specifying the MIMIC model structure, including the "
+"measurement model and the regression of the latent variable on the "
+"predictors."
+msgstr ""
 
 msgid ""
 "Specify both factor indicator variables and moderator variables to run the "
@@ -332,6 +541,12 @@ msgstr "擬合不變性模型"
 msgid "Fit per Group Test"
 msgstr "分組擬合檢定"
 
+msgid ""
+"CFA fit statistics computed separately for each group defined by the "
+"moderator. This checks whether the baseline factor model fits adequately "
+"within each group before testing invariance."
+msgstr ""
+
 msgid "Group Model"
 msgstr "分組模型"
 
@@ -355,6 +570,13 @@ msgstr "群組 %s 的模型未收斂。"
 
 msgid "Global Invariance Fit"
 msgstr "整體不變性擬合"
+
+msgid ""
+"Comparison of MNLFA invariance models (configural, metric, scalar, strict) "
+"using -2 log-likelihood difference tests. Significant differences indicate "
+"that the more constrained model fits significantly worse, suggesting non-"
+"invariance at that level."
+msgstr ""
 
 msgid "Type"
 msgstr "類型"
@@ -390,8 +612,27 @@ msgstr ""
 msgid "%1$s Error in fitting the %2$s model. Internal error message(s): %3$s"
 msgstr "擬合 %2$s 模型時發生 %1$s 錯誤。內部錯誤訊息：%3$s"
 
-msgid "Parameter Estimates"
-msgstr "參數估計值"
+msgid "OK"
+msgstr ""
+
+msgid "%1$s: optimizer status '%2$s'."
+msgstr ""
+
+#, fuzzy
+msgid ""
+"Fitting the model resulted in warnings. Check the 'Show warnings' box in the "
+"Output Options to see the warnings."
+msgstr "%s擬合模型時出現警告。勾選「輸出選項」中的「顯示警告」以察看警告訊息。"
+
+msgid "Warnings (from R):"
+msgstr ""
+
+msgid ""
+"Parameter estimates from the MNLFA invariance models. Moderation effects "
+"show how each parameter varies as a function of the moderator variable. "
+"Estimates on 'Effect' rows represent the linear change in the parameter per "
+"unit change in the moderator."
+msgstr ""
 
 msgid "The %s model could not be fitted"
 msgstr "無法擬合 %s 模型"
@@ -399,35 +640,72 @@ msgstr "無法擬合 %s 模型"
 msgid "Loadings"
 msgstr "因素負荷量"
 
+msgid ""
+"Factor loadings and their moderation effects. Significant moderation effects "
+"indicate that the relationship between the latent factor and its indicator "
+"varies across levels of the moderator (metric non-invariance)."
+msgstr ""
+
 msgid "Factor"
 msgstr "因子"
 
 msgid "Effect"
 msgstr "效果"
 
-msgid "Std. Error"
-msgstr "標準誤"
-
 msgid "Intercepts"
 msgstr "截距"
 
-#, fuzzy
-msgid "Residual Variances"
-msgstr "殘差變異數"
+msgid ""
+"Indicator intercepts and their moderation effects. Significant moderation "
+"effects indicate that the item difficulty or baseline level varies across "
+"the moderator (scalar non-invariance)."
+msgstr ""
+
+msgid ""
+"Indicator residual variances and their moderation effects. Estimates are on "
+"the log scale internally and back-transformed for display. Significant "
+"moderation indicates that measurement precision varies across the moderator "
+"(strict non-invariance)."
+msgstr ""
 
 #, fuzzy
 msgid "Factor Variances"
 msgstr "因素變異數"
 
+msgid ""
+"Latent factor variances and their moderation effects. Estimates are on the "
+"log scale internally and back-transformed for display. Significant "
+"moderation indicates that the spread of the latent trait changes across the "
+"moderator."
+msgstr ""
+
 msgid "Factor Means"
 msgstr "因素平均數"
+
+msgid ""
+"Latent factor means and their moderation effects. Significant moderation "
+"indicates that the average level of the latent trait differs across the "
+"moderator."
+msgstr ""
 
 #, fuzzy
 msgid "Factor Covariances"
 msgstr "因素共變數"
 
+msgid ""
+"Latent factor covariances and their moderation effects. Significant "
+"moderation indicates that the relationship between latent factors varies "
+"across the moderator."
+msgstr ""
+
 msgid "Parameter Plots"
 msgstr "參數圖"
+
+msgid ""
+"Plots showing how model parameters (loadings, intercepts, variances) vary as "
+"a function of the moderator variable. Each plot displays the estimated "
+"parameter value across the range of the moderator."
+msgstr ""
 
 #, fuzzy
 msgid "total"
@@ -435,9 +713,6 @@ msgstr "總計"
 
 msgid "Parameter Value"
 msgstr "參數值"
-
-msgid "Model Syntax"
-msgstr "模型的 Lavaan 程式碼"
 
 msgid "Nothing to print."
 msgstr "沒有可列印的內容。"
@@ -470,6 +745,25 @@ msgstr "# 殘差變異數區塊"
 msgid "# FACTOR COVARIANCES BLOCK"
 msgstr "# 因素共變異數區塊"
 
+#, fuzzy
+msgid "Error"
+msgstr "標準誤"
+
+msgid "Unknown"
+msgstr ""
+
+msgid "OK/Gradient"
+msgstr ""
+
+msgid "Non-convex Hessian"
+msgstr ""
+
+msgid "Unchecked"
+msgstr ""
+
+msgid "Code %s"
+msgstr ""
+
 msgid "Grouping variable has fewer than 3 observations in group %s"
 msgstr "分組變數在%s組中的觀察值小於3"
 
@@ -491,9 +785,12 @@ msgstr "估計失敗。訊息:%s"
 msgid "Estimation failed! Message: Model %s did not converge!"
 msgstr "估計失敗。訊息:模型%s無法收斂!"
 
-#, fuzzy
-msgid "Model Fit"
-msgstr "模型配適"
+msgid ""
+"Overall model fit test using bootstrap-based distance measures. The test "
+"statistic is compared to a critical value obtained from bootstrapping. If "
+"the test statistic exceeds the critical value, the model is rejected at the "
+"chosen significance level."
+msgstr ""
 
 msgid "Group"
 msgstr "組別"
@@ -519,23 +816,53 @@ msgstr "至少有一個結果不可採用。"
 msgid "Denotes the fit of the model including a saturated structural model."
 msgstr "表示包含飽和結構模型的模型擬合度。"
 
+msgid ""
+"Parameter estimates for the PLS-SEM model, including outer weights, outer "
+"loadings, inner model path coefficients, total effects, and residual "
+"correlations."
+msgstr ""
+
 msgid "Weights"
 msgstr "加權"
+
+msgid ""
+"Outer weights relating observed indicators to their composite constructs. "
+"Weights determine how indicators are combined to form construct scores and "
+"reflect each indicator's relative contribution."
+msgstr ""
 
 msgid "Construct"
 msgstr "構念"
 
+msgid ""
+"Outer loadings (correlations) between indicators and their constructs. "
+"Loadings above 0.708 indicate that the construct explains more than 50%% of "
+"the indicator's variance."
+msgstr ""
+
 msgid "Regression Coefficients"
 msgstr "迴歸係數"
+
+msgid ""
+"Inner model path coefficients between constructs. The f² effect size "
+"indicates the substantive impact of removing each predictor: 0.02 (small), "
+"0.15 (medium), 0.35 (large)."
+msgstr ""
 
 msgid "Outcome"
 msgstr "結果"
 
-msgid "Total Effects"
-msgstr "總效果"
+msgid ""
+"Total effects combining direct and all indirect paths between constructs."
+msgstr ""
 
 msgid "Residual Correlations"
 msgstr "殘差相關"
+
+msgid ""
+"Residual correlations between indicators after accounting for the construct "
+"model. These represent correlated measurement errors between indicator pairs."
+msgstr ""
 
 msgid "VIF"
 msgstr "VIF"
@@ -546,8 +873,21 @@ msgstr "無法計算 VIF。"
 msgid "Endogenous Indicator Prediction"
 msgstr "內衍指標預測"
 
+msgid ""
+"Cross-validated prediction of endogenous indicators using PLSpredict. The "
+"prediction metrics assess how well the PLS-SEM model predicts indicator "
+"scores out of sample."
+msgstr ""
+
 msgid "Prediction Metrics"
 msgstr "預測指標"
+
+msgid ""
+"MAE (mean absolute error), RMSE (root mean squared error), and Q² prediction "
+"metrics for endogenous indicators. Q² > 0 indicates that prediction error is "
+"less than using the training sample mean. When benchmarks are included, "
+"lower MAE/RMSE than the benchmark suggests the PLS-SEM model predicts better."
+msgstr ""
 
 msgid "Target MAE"
 msgstr "目標 MAE"
@@ -596,6 +936,13 @@ msgstr "估計失敗。訊息:%s"
 msgid "Additional Fit Measures"
 msgstr "其他配適指標"
 
+msgid ""
+"Additional model fit measures for PLS-SEM. Includes CFI, GFI, RMSEA, SRMR "
+"for the model-implied indicator correlation matrix, Goodness-of-Fit (GoF) as "
+"geometric mean of AVE and R², and bootstrap-based distance measures (dG, dL, "
+"dML)."
+msgstr ""
+
 msgid "Hoelter's critical N (CN)"
 msgstr "Hoelter 臨界樣本數 (CN)"
 
@@ -621,8 +968,31 @@ msgstr "無法計算模型評估：%s"
 msgid "Model assessment could not be computed for group %1$s: %2$s"
 msgstr "無法計算群組 %1$s 的模型評估：%2$s"
 
+msgid ""
+"R² and adjusted R² for each endogenous construct. R² represents the "
+"proportion of variance in the construct explained by its predictors in the "
+"structural model. Values of 0.75, 0.50, and 0.25 are considered substantial, "
+"moderate, and weak."
+msgstr ""
+
+msgid "R²"
+msgstr ""
+
+msgid "Adjusted R²"
+msgstr ""
+
 msgid "Reliability Measures"
 msgstr "信度指標 (Cronbach's α 與 CR值)"
+
+msgid ""
+"Construct reliability measures. Cronbach's α assumes equal indicator weights "
+"(tau-equivalence). Jöreskog's ρ uses the outer loadings and is the preferred "
+"measure for PLS-SEM. Dijkstra-Henseler's ρ_A is a consistent reliability "
+"estimate. Values above 0.70 indicate acceptable reliability."
+msgstr ""
+
+msgid "Latent"
+msgstr "潛在"
 
 msgid "Cronbach's %s"
 msgstr "Cronbach %s"
@@ -633,20 +1003,63 @@ msgstr ""
 msgid "Dijkstra-Henseler's %s"
 msgstr ""
 
-msgid "Correlation tables"
+#, fuzzy
+msgid "Correlation Tables"
 msgstr "相關係數表"
 
-msgid "Observed indicator correlation matrix"
+msgid ""
+"Observed and model-implied correlation matrices for indicators and "
+"constructs. Comparing observed and implied matrices helps assess model fit "
+"at the indicator and construct level."
+msgstr ""
+
+#, fuzzy
+msgid "Observed Indicator Correlation Matrix"
 msgstr "觀察指標相關矩陣"
 
-msgid "Implied indicator correlation matrix"
+msgid "Sample correlation matrix of the observed indicator variables."
+msgstr ""
+
+#, fuzzy
+msgid "Implied Indicator Correlation Matrix"
 msgstr "隱含指標的相關矩陣"
 
-msgid "Observed construct correlation matrix"
+msgid ""
+"Model-implied correlation matrix of the indicator variables. Closeness to "
+"the observed matrix indicates good model fit at the indicator level."
+msgstr ""
+
+#, fuzzy
+msgid "Observed Construct Correlation Matrix"
 msgstr "觀察構念相關矩陣"
 
-msgid "Implied construct correlation matrix"
+msgid "Sample correlation matrix of the composite construct scores."
+msgstr ""
+
+#, fuzzy
+msgid "Implied Construct Correlation Matrix"
 msgstr "隱含構面的相關矩陣"
+
+msgid ""
+"Model-implied correlation matrix of the constructs. Closeness to the "
+"observed construct correlations indicates good structural model fit."
+msgstr ""
+
+msgid ""
+"Sample correlation matrix of the observed indicator variables, shown per "
+"group."
+msgstr ""
+
+msgid ""
+"Model-implied correlation matrix of the indicator variables, shown per group."
+msgstr ""
+
+msgid ""
+"Sample correlation matrix of the composite construct scores, shown per group."
+msgstr ""
+
+msgid "Model-implied correlation matrix of the constructs, shown per group."
+msgstr ""
 
 msgid "Implied indicator correlations could not be computed: %s"
 msgstr "無法計算隱含指標相關性：%s"
@@ -695,8 +1108,11 @@ msgstr "估計失敗。訊息:模型%s無法收斂！"
 msgid "Estimation failed! Message: %s has negative degrees of freedom."
 msgstr "估計失敗!訊息:模型%s的自由度為負值。"
 
-msgid "Model fit"
-msgstr "模型配適"
+msgid ""
+"Model fit statistics including AIC, BIC, number of parameters, and a chi-"
+"square test for exact fit. A non-significant chi-square suggests the model "
+"fits the data well, though this test is sensitive to sample size."
+msgstr ""
 
 msgid "n(Observations)"
 msgstr "樣本數"
@@ -748,26 +1164,63 @@ msgstr "所有參數"
 msgid "<b>Warnings:</b> %s"
 msgstr "<b>警告:</b> %s"
 
+msgid ""
+"Parameter estimates from the structural equation model, organized by type: "
+"factor loadings, regression coefficients, variances, covariances, and "
+"additional parameters."
+msgstr ""
+
 msgid "Factor Loadings"
 msgstr "因素負荷量"
 
-msgid "Latent"
-msgstr "潛在"
+msgid ""
+"Factor loadings from the measurement model (=~ operator). Each loading "
+"reflects how strongly a latent variable is related to its observed "
+"indicator. The first indicator loading is typically fixed to 1 to set the "
+"scale of the latent variable."
+msgstr ""
 
-msgid "Regression coefficients"
-msgstr "迴歸係數"
+msgid ""
+"Regression coefficients from the structural part of the model (~ operator). "
+"These represent directed effects of predictors on outcomes among latent and/"
+"or observed variables."
+msgstr ""
 
-msgid "Factor variances"
-msgstr "因素變異數"
+msgid ""
+"Estimated variances of the latent variables. For exogenous latent variables "
+"these are total variances; for endogenous latent variables these are "
+"residual variances (the variance not explained by predictors)."
+msgstr ""
 
-msgid "Factor covariances"
-msgstr "因素共變數"
+msgid ""
+"Estimated covariances between latent variables (~~ operator). These "
+"represent undirected associations between latent variables."
+msgstr ""
 
 msgid "Variables"
 msgstr "變項"
 
-msgid "Residual variances"
-msgstr "殘差變異數"
+msgid ""
+"Residual variances of the observed variables: the variance not explained by "
+"the latent variables. Negative residual variances (Heywood cases) may "
+"indicate model misspecification."
+msgstr ""
+
+#, fuzzy
+msgid "Residual Covariances"
+msgstr "殘差共變數"
+
+msgid ""
+"Residual covariances between observed variables (~~ operator). These "
+"represent correlated errors, i.e., shared variance between indicators not "
+"accounted for by the latent variables."
+msgstr ""
+
+msgid ""
+"Intercept (mean) parameters for observed and latent variables in the mean "
+"structure. For observed variables, these are the expected values when all "
+"predictors are zero."
+msgstr ""
 
 msgid "Missing data method 'FIML' forces meanstructure."
 msgstr "缺失資料方法 'FIML' 強制要求均值結構"
@@ -775,23 +1228,68 @@ msgstr "缺失資料方法 'FIML' 強制要求均值結構"
 msgid "Thresholds"
 msgstr "閾限"
 
+msgid ""
+"Threshold parameters for ordinal observed variables. These define the cut-"
+"points on the underlying continuous distribution that separate the observed "
+"categories."
+msgstr ""
+
 msgid "Threshold"
 msgstr "閾限"
 
-msgid "Defined parameters"
+#, fuzzy
+msgid "Defined Parameters"
 msgstr "變數定義"
+
+msgid ""
+"User-defined parameters specified with the := operator. These are functions "
+"of existing model parameters, such as indirect effects or sums of "
+"coefficients. Standard errors are computed using the Delta method."
+msgstr ""
 
 msgid "Name"
 msgstr "命名"
 
-msgid "Total effects"
-msgstr "總效果"
+#, fuzzy
+msgid "Indirect Effects"
+msgstr "間接效果"
+
+msgid ""
+"Indirect effects of predictors on outcomes transmitted through mediating "
+"variables. These are computed as the product of the path coefficients along "
+"the indirect pathway."
+msgstr ""
+
+msgid ""
+"Total effects combining direct and all indirect effects of predictors on "
+"outcomes."
+msgstr ""
+
+msgid ""
+"Additional model fit indices and information criteria for evaluating overall "
+"model quality."
+msgstr ""
+
+msgid ""
+"Model fit indices including incremental indices (CFI, TLI, NFI), absolute "
+"indices (RMSEA, SRMR, GFI), and information criteria (AIC, BIC). Common "
+"guidelines: CFI/TLI > .95, RMSEA < .06, SRMR < .08 indicate good fit, though "
+"these should be interpreted cautiously."
+msgstr ""
 
 msgid "%s Fit indices are based on the scaled test statistic."
 msgstr "%s 配適指標，將基於量尺化檢定統計數。"
 
-msgid "T-size fit indices"
+#, fuzzy
+msgid "T-Size Fit Indices"
 msgstr "T-size 配適指標"
+
+msgid ""
+"T-size equivalence testing fit indices (Marcoulides & Yuan, 2017). These "
+"provide data-driven cutoff values for CFI and RMSEA that replace "
+"conventional rules of thumb. The poor-fair and fair-close limits define "
+"ranges for interpreting fit."
+msgstr ""
 
 msgid "Poor-fair limit"
 msgstr "差至可接受臨界值"
@@ -802,14 +1300,35 @@ msgstr "可接受至良好臨界值"
 msgid "T-size statistics are computed for <i>%s = 0.05</i>."
 msgstr "T 值統計量是針對 <i>%s = 0.05</i> 計算的。"
 
-msgid "Average variance extracted"
+msgid ""
+"Proportion of variance in each endogenous variable explained by its "
+"predictors in the model. Values range from 0 to 1, with higher values "
+"indicating more variance explained."
+msgstr ""
+
+#, fuzzy
+msgid "Average Variance Extracted"
 msgstr "平均變異抽取量 (AVE)"
+
+msgid ""
+"Average Variance Extracted (AVE) measures the amount of variance captured by "
+"a latent construct relative to measurement error. AVE values above 0.5 "
+"indicate adequate convergent validity, meaning the construct explains more "
+"than half the variance of its indicators."
+msgstr ""
 
 msgid "AVE"
 msgstr "平均變異抽取量 (AVE)"
 
 msgid "Reliability"
 msgstr "信度指標 (Cronbach's α 與 CR值)"
+
+msgid ""
+"Composite reliability coefficients for each latent construct. Coefficient α "
+"(alpha) assumes tau-equivalence (equal loadings), while coefficient ω "
+"(omega) allows for congeneric indicators (unequal loadings) and is generally "
+"preferred. Values above 0.7 are commonly considered acceptable."
+msgstr ""
 
 msgid "Coefficient α"
 msgstr "Coefficient α (Cronbach's α)"
@@ -820,11 +1339,22 @@ msgstr "Coefficient ω(CR值)"
 msgid "Heterotrait-Monotrait Ratio"
 msgstr "異質-單質比"
 
-msgid "Heterotrait-monotrait ratio"
-msgstr "異質-單質比"
+msgid ""
+"Heterotrait-Monotrait (HTMT) ratio of correlations for assessing "
+"discriminant validity. HTMT values below 0.85 (conservative) or 0.90 "
+"(liberal) suggest that constructs are empirically distinct from each other."
+msgstr ""
 
-msgid "Mardia's coefficients"
+#, fuzzy
+msgid "Mardia's Coefficients"
 msgstr "Mardia係數"
+
+msgid ""
+"Mardia's multivariate skewness and kurtosis coefficients for assessing "
+"whether the data meet the multivariate normality assumption. Significant "
+"values suggest non-normality, which may affect chi-square tests and standard "
+"errors under ML estimation."
+msgstr ""
 
 msgid "Coefficient"
 msgstr "係數"
@@ -852,8 +1382,41 @@ msgstr "偏態"
 msgid "Kurtosis"
 msgstr "峰度"
 
-msgid "Covariance tables"
+#, fuzzy
+msgid "Covariance Tables"
 msgstr "共變數表"
+
+msgid ""
+"Observed, model-implied, and residual covariance matrices. Comparing these "
+"matrices helps evaluate local model fit."
+msgstr ""
+
+#, fuzzy
+msgid "Observed Covariance Matrix"
+msgstr "模式隱含之共變數矩陣"
+
+msgid ""
+"Sample covariance matrix of the observed variables used for model estimation."
+msgstr ""
+
+msgid ""
+"Model-implied covariance matrix derived from the estimated parameters. Close "
+"correspondence with the observed covariance matrix indicates good model fit."
+msgstr ""
+
+msgid ""
+"Difference between the observed and model-implied covariance matrices. Small "
+"residuals indicate that the model reproduces the observed covariances well."
+msgstr ""
+
+#, fuzzy
+msgid "Standardized Residual Covariance Matrix"
+msgstr "殘差共變數矩陣"
+
+msgid ""
+"Standardized residual covariances. Values exceeding |2| may indicate "
+"localized areas of poor fit for specific pairs of variables."
+msgstr ""
 
 msgid ""
 "The standardized residual covariance table is currently unavailable when the "
@@ -871,35 +1434,58 @@ msgstr "以拔靴法計算誤差時，無法提供標準化殘差共變數表"
 msgid "The standardized residual covariance matrices could not be computed"
 msgstr "無法計算標準化殘差共變數矩陣"
 
-msgid "Modification indices"
-msgstr "修正指標"
-
 msgid "Modification Indices"
 msgstr "修正指標"
 
-msgid "group"
-msgstr "組"
+msgid ""
+"Modification indices (MI) estimate the expected decrease in the model chi-"
+"square statistic if a currently fixed parameter were freed. The expected "
+"parameter change (EPC) indicates the approximate value of the freed "
+"parameter."
+msgstr ""
 
-msgid "mi"
-msgstr "修正指標"
+msgid ""
+"MI is the expected chi-square decrease if a fixed parameter is freed. EPC is "
+"the expected parameter change. SEPC columns show standardized versions (lv = "
+"latent only, all = fully, nox = excluding exogenous observed)."
+msgstr ""
 
-msgid "epc"
-msgstr "期望參數變動 (EPC)"
+msgid "MI"
+msgstr ""
 
-msgid "sepc (lv)"
-msgstr "sepc (潛在變項)"
+msgid "EPC"
+msgstr ""
 
-msgid "sepc (all)"
+msgid "SEPC (lv)"
+msgstr ""
+
+#, fuzzy
+msgid "SEPC (all)"
 msgstr "sepc(所有變項）"
 
-msgid "sepc (nox)"
+#, fuzzy
+msgid "SEPC (nox)"
 msgstr "sepc (非內生變數)"
 
-msgid "Sensitivity analysis"
+#, fuzzy
+msgid "Sensitivity Analysis"
 msgstr "敏感度分析"
 
-msgid "Summary of sensitivity analysis"
+msgid ""
+"Sensitivity analysis using phantom variables to assess the robustness of "
+"path estimates to unmeasured confounding. Evaluates whether conclusions "
+"change when an unobserved common cause is introduced."
+msgstr ""
+
+#, fuzzy
+msgid "Summary of Sensitivity Analysis"
 msgstr "敏感度分析摘要"
+
+msgid ""
+"Summary of how path estimates and their significance change when phantom "
+"variables representing unmeasured confounders are introduced. P* denotes the "
+"p-value from the sensitivity model."
+msgstr ""
 
 msgid "Path"
 msgstr "路徑圖"
@@ -933,20 +1519,39 @@ msgstr "進行敏感度分析 (模型: %1$s, 組: %2$s)"
 msgid "Performing sensitivity analysis (model: %1$s)"
 msgstr "進行敏感度分析 (模型: %1$s)"
 
-msgid "Sensitivity parameters that led to a change in significance"
+#, fuzzy
+msgid "Sensitivity Parameters That Led to a Change in Significance"
 msgstr "導致顯著性變化的敏感度參數"
+
+msgid ""
+"Phantom variable coefficients from sensitivity models where the statistical "
+"significance of a path changed compared to the original model."
+msgstr ""
 
 msgid "Sensitivity parameters"
 msgstr "敏感性參數"
 
-msgid "Summary of sensitivity parameters"
+#, fuzzy
+msgid "Summary of Sensitivity Parameters"
 msgstr "敏感性參數的摘要"
+
+msgid ""
+"Summary statistics (mean, min, max) of the phantom variable coefficients "
+"across all sensitivity analyses, indicating the range of unmeasured "
+"confounding explored."
+msgstr ""
 
 msgid "Sensitivity parameter"
 msgstr "敏感性參數"
 
-msgid "Path diagram"
+#, fuzzy
+msgid "Path Diagram"
 msgstr "路徑圖"
+
+msgid ""
+"Graphical representation of the model showing latent variables (circles), "
+"observed variables (squares), and the paths between them."
+msgstr ""
 
 msgid "Satorra-Bentler"
 msgstr ""
@@ -980,6 +1585,48 @@ msgstr "穩健 Huber-White"
 
 msgid "first-order"
 msgstr "一階"
+
+#~ msgid "Parameter estimates"
+#~ msgstr "參數估計值"
+
+#~ msgid "Std. error"
+#~ msgstr "標準誤"
+
+#~ msgid "Model fit"
+#~ msgstr "模型配適"
+
+#~ msgid "Regression coefficients"
+#~ msgstr "迴歸係數"
+
+#~ msgid "Factor variances"
+#~ msgstr "因素變異數"
+
+#~ msgid "Factor covariances"
+#~ msgstr "因素共變數"
+
+#~ msgid "Residual variances"
+#~ msgstr "殘差變異數"
+
+#~ msgid "Total effects"
+#~ msgstr "總效果"
+
+#~ msgid "Heterotrait-monotrait ratio"
+#~ msgstr "異質-單質比"
+
+#~ msgid "Modification indices"
+#~ msgstr "修正指標"
+
+#~ msgid "group"
+#~ msgstr "組"
+
+#~ msgid "mi"
+#~ msgstr "修正指標"
+
+#~ msgid "epc"
+#~ msgstr "期望參數變動 (EPC)"
+
+#~ msgid "sepc (lv)"
+#~ msgstr "sepc (潛在變項)"
 
 #~ msgid "n"
 #~ msgstr "n"
