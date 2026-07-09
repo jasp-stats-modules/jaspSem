@@ -80,8 +80,8 @@ options$informationMatrix <- "expected"
 options$naAction          <- "fiml"
 options$modelTest         <- "standard"
 options$reliability       <- TRUE
-options$ave               <- TRUE
-options$htmt              <- TRUE
+options$averageVarianceExtracted  <- TRUE
+options$heterotraitMonotraitRatio <- TRUE
 results <- jaspTools::runAnalysis("SEM", testthat::test_path("poldem_grouped.csv"), options, makeTests = FALSE)
 
 
@@ -91,6 +91,17 @@ test_that("Reliability table results match", {
                                  list("ind60", 0.902334680203149, 0.943689529177281, "dem60", 0.858794528217608,
                                       0.167859510809001, "dem65", 0.882739385479519, 0.824105408667229,
                                       ".TOTAL.", 0.91494164193877, 0.322839343402656))
+})
+
+test_that("Measurement-model reliability table results match", {
+  optionsMM <- options
+  optionsMM$measurementModelReliability <- TRUE
+  resultsMM <- jaspTools::runAnalysis("SEM", testthat::test_path("poldem_grouped.csv"), optionsMM, makeTests = FALSE)
+  table <- resultsMM[["results"]][["modelContainer"]][["collection"]][["modelContainer_reliability"]][["data"]]
+  jaspTools::expect_equal_tables(table,
+                                 list("ind60", 0.902334680203149, 0.943689529177281, "dem60", 0.858794528217608,
+                                      0.841180031323842, "dem65", 0.882739385479519, 0.857554082053553,
+                                      ".TOTAL.", 0.91494164193877, 0.919205826035811))
 })
 
 test_that("Heterotrait-monotrait ratio table results match", {
@@ -105,6 +116,36 @@ test_that("Average variance extracted table results match", {
   jaspTools::expect_equal_tables(table,
                                  list(0.858801124923028, "ind60", 0.597128634982681, "dem60", 0.640021172021486,
                                       "dem65"))
+})
+
+
+# Latent-only stats (HTMT / AVE / reliability) must not crash on a factor-less regression model
+optionsNoLatent <- jaspTools::analysisOptions("SEM")
+optionsNoLatent$models <- list(list(name = "Model1",
+  syntax = list(model = "x1 ~ x2 + x3 + y1", columns = c("x1", "x2", "x3", "y1"))))
+optionsNoLatent$emulation         <- "lavaan"
+optionsNoLatent$estimator         <- "default"
+optionsNoLatent$group             <- ""
+optionsNoLatent$samplingWeights   <- ""
+optionsNoLatent$informationMatrix <- "expected"
+optionsNoLatent$naAction          <- "fiml"
+optionsNoLatent$modelTest         <- "standard"
+optionsNoLatent$reliability                <- TRUE
+optionsNoLatent$averageVarianceExtracted   <- TRUE
+optionsNoLatent$heterotraitMonotraitRatio  <- TRUE
+resultsNoLatent <- jaspTools::runAnalysis("SEM", testthat::test_path("poldem_grouped.csv"), optionsNoLatent, makeTests = FALSE)
+
+test_that("Latent-only stats degrade gracefully on a regression-only model", {
+  expect_equal(resultsNoLatent[["status"]], "complete")
+
+  coll  <- resultsNoLatent[["results"]][["modelContainer"]][["collection"]]
+  htmt  <- coll[["modelContainer_htmt"]][["collection"]][["modelContainer_htmt_htmttab"]][["error"]][["errorMessage"]]
+  ave   <- coll[["modelContainer_AVE"]][["error"]][["errorMessage"]]
+  rel   <- coll[["modelContainer_reliability"]][["error"]][["errorMessage"]]
+
+  expect_match(htmt, "at least two latent variables")
+  expect_match(ave,  "at least one latent variable")
+  expect_match(rel,  "at least one latent variable")
 })
 
 

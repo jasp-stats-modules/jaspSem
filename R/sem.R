@@ -43,7 +43,7 @@ SEMInternal <- function(jaspResults, dataset, options, ...) {
   .semHtmt(modelContainer, dataset, options, ready)
   .semMardiasCoefficient(modelContainer, dataset, options, ready)
   .semCov(modelContainer, dataset, options, ready)
-  .semMI(modelContainer, datset, options, ready)
+  .semMI(modelContainer, dataset, options, ready)
   .semSensitivity(modelContainer, dataset, options, ready)
   .semPathPlot(modelContainer, dataset, options, ready)
 }
@@ -1434,7 +1434,13 @@ checkLavaanModel <- function(model, availableVars) {
 
       path <- list()
       for (idx in 1:nrow(pe_indeff)) {
-        path[[idx]] <- gsub("_", " \u2192 ", pe_indeff[idx, "lhs"])
+        pathStr <- pe_indeff[idx, "lhs"]
+        matches <- regmatches(pathStr, gregexpr("JaspColumn_[0-9]+_Encoded", pathStr))
+        if (length(matches[[1]]) > 0) {
+          decoded_matches <- sapply(matches[[1]], jaspBase::decodeColNames)
+          regmatches(pathStr, gregexpr("JaspColumn_[0-9]+_Encoded", pathStr)) <- list(decoded_matches)
+        }
+        path[[idx]] <- gsub("_", " \u2192 ", pathStr)
         for (group in groups)
           path[[idx]] <- gsub(paste0(" ", group, " \u2192"), "", path[[idx]])
       }
@@ -1698,8 +1704,14 @@ checkLavaanModel <- function(model, availableVars) {
   }
 }
 
+# number of latent variables in a fitted lavaan object (0 for pure regression / non-lavaan)
+.semFitLatentCount <- function(fit) {
+  if (!inherits(fit, "lavaan")) return(0L)
+  length(lavaan::lavNames(fit, "lv"))
+}
+
 .semAve <- function(modelContainer, dataset, options, ready) {
-  if (!options[["ave"]] || !is.null(modelContainer[["AVE"]])) return()
+  if (!options[["averageVarianceExtracted"]] || !is.null(modelContainer[["AVE"]])) return()
 
   # init table
   avetab <- createJaspTable(gettext("Average Variance Extracted"))
@@ -1716,12 +1728,18 @@ checkLavaanModel <- function(model, availableVars) {
     }
   }
 
-  avetab$dependOn(c("ave", "models"))
+  avetab$dependOn(c("averageVarianceExtracted", "models"))
   avetab$position <- .9
 
   modelContainer[["AVE"]] <- avetab
 
   if (!ready || modelContainer$getError()) return()
+
+  # AVE requires latent variables; a factor-less model (e.g. a pure regression) has none
+  if (all(vapply(modelContainer[["results"]][["object"]], .semFitLatentCount, integer(1)) == 0)) {
+    avetab$setError(gettext("Average variance extracted requires a model with at least one latent variable."))
+    return()
+  }
 
   # compute data and fill table
   if (options[["group"]] == "") {
@@ -1792,6 +1810,35 @@ checkLavaanModel <- function(model, availableVars) {
   }
 }
 
+.semMeasurementModelOmega <- function(fit, higherOrder, ordScale) {
+  partab  <- lavaan::parameterTable(fit)
+  inds    <- unique(partab[partab$op == "=~", "rhs"])
+  latents <- unique(partab[partab$op == "=~", "lhs"])
+  endoFac <- intersect(unique(partab[partab$op == "~", "lhs"]), latents)
+
+  trueArg <- stats::setNames(as.list(endoFac), endoFac)
+
+  omega <- semTools::compRelSEM(fit, tau.eq = FALSE, higher = higherOrder,
+                                return.total = TRUE, simplify = TRUE,
+                                ord.scale = ordScale, true = trueArg)
+
+  if (length(endoFac) == 0 || !".TOTAL." %in% names(omega))
+    return(omega)
+
+  lambdaRows <- partab[partab$op == "=~", ]
+  Lambda     <- matrix(0, length(inds), length(latents),
+                       dimnames = list(inds, latents))
+  for (i in seq_len(nrow(lambdaRows)))
+    Lambda[lambdaRows$rhs[i], lambdaRows$lhs[i]] <- lambdaRows$est[i]
+
+  Psi     <- lavaan::lavInspect(fit, "cov.lv")[latents, latents, drop = FALSE]
+  S       <- lavaan::lavInspect(fit, "sampstat")$cov[inds, inds, drop = FALSE]
+
+  impliedFac <- sum(Lambda %*% Psi %*% t(Lambda))
+  omega[".TOTAL."] <- impliedFac / sum(S)
+  omega
+}
+
 .semReliability <- function(modelContainer, dataset, options, ready) {
   if (!options[["reliability"]] || !is.null(modelContainer[["reliability"]])) return()
 
@@ -1813,40 +1860,72 @@ checkLavaanModel <- function(model, availableVars) {
     }
   }
 
-  reliabilitytab$dependOn(c("reliability", "models"))
+  reliabilitytab$dependOn(c("reliability", "measurementModelReliability", "models"))
   reliabilitytab$position <- .95
 
   modelContainer[["reliability"]] <- reliabilitytab
 
   if (!ready || modelContainer$getError()) return()
 
+  # reliability requires latent variables; a factor-less model (e.g. a pure regression) has none
+  if (all(vapply(modelContainer[["results"]][["object"]], .semFitLatentCount, integer(1)) == 0)) {
+    reliabilitytab$setError(gettext("Reliability requires a model with at least one latent variable."))
+    return()
+  }
+
   # compute data and fill table
   if (options[["group"]] == "") {
 
     if (length(options[["models"]]) < 2) {
 
-      parTable <- lavaan::parameterTable(modelContainer[["results"]][["object"]][[1]])
+      fitObj   <- modelContainer[["results"]][["object"]][[1]]
+      parTable <- lavaan::parameterTable(fitObj)
       parTable <- parTable[parTable$op == "=~",]
       higherOrder <- unique(parTable[!parTable$rhs %in% names(dataset),]$lhs)
+      ordScale <- !isTRUE(lavaan::lavInspect(fitObj, "options")$categorical)
 
-      reliability_alpha          <- semTools::compRelSEM(modelContainer[["results"]][["object"]][[1]], tau.eq = TRUE, return.total = TRUE)
-      reliability_omega          <- semTools::compRelSEM(modelContainer[["results"]][["object"]][[1]], tau.eq = FALSE, higher = higherOrder, return.total = TRUE)
-      reliabilitytab[["factor"]] <- names(reliability_omega)
-      reliabilitytab[["reliabilityAlpha"]]     <- reliability_alpha
-      reliabilitytab[["reliabilityOmega"]]     <- reliability_omega
+      rel <- try({
+        list(
+          alpha = semTools::compRelSEM(fitObj, tau.eq = TRUE, return.total = TRUE, simplify = TRUE, ord.scale = ordScale),
+          omega = if (isTRUE(options[["measurementModelReliability"]]))
+                    .semMeasurementModelOmega(fitObj, higherOrder, ordScale)
+                  else
+                    semTools::compRelSEM(fitObj, tau.eq = FALSE, higher = higherOrder, return.total = TRUE, simplify = TRUE, ord.scale = ordScale)
+        )
+      })
+      if (inherits(rel, "try-error")) {
+        reliabilitytab$setError(conditionMessage(attr(rel, "condition")))
+        return()
+      }
+      reliabilitytab[["factor"]]           <- names(rel$omega)
+      reliabilitytab[["reliabilityAlpha"]] <- rel$alpha
+      reliabilitytab[["reliabilityOmega"]] <- rel$omega
 
     } else {
       alphalist <- list()
       omegalist <- list()
       for (i in seq_along(options[["models"]])) {
-        parTable <- lavaan::parameterTable(modelContainer[["results"]][["object"]][[i]])
+        fitObj   <- modelContainer[["results"]][["object"]][[i]]
+        parTable <- lavaan::parameterTable(fitObj)
         parTable <- parTable[parTable$op == "=~",]
         higherOrder <- unique(parTable[!parTable$rhs %in% names(dataset),]$lhs)
+        ordScale <- !isTRUE(lavaan::lavInspect(fitObj, "options")$categorical)
 
-        reliability_alpha          <- semTools::compRelSEM(modelContainer[["results"]][["object"]][[i]], tau.eq = TRUE, higher = higherOrder, return.total = TRUE)
-        reliability_omega          <- semTools::compRelSEM(modelContainer[["results"]][["object"]][[i]], tau.eq = FALSE, higher = higherOrder, return.total = TRUE)
-        alphalist[[i]] <- reliability_alpha
-        omegalist[[i]] <- reliability_omega
+        rel <- try({
+          list(
+            alpha = semTools::compRelSEM(fitObj, tau.eq = TRUE,  higher = higherOrder, return.total = TRUE, simplify = TRUE, ord.scale = ordScale),
+            omega = if (isTRUE(options[["measurementModelReliability"]]))
+                      .semMeasurementModelOmega(fitObj, higherOrder, ordScale)
+                    else
+                      semTools::compRelSEM(fitObj, tau.eq = FALSE, higher = higherOrder, return.total = TRUE, simplify = TRUE, ord.scale = ordScale)
+          )
+        })
+        if (inherits(rel, "try-error")) {
+          reliabilitytab$setError(conditionMessage(attr(rel, "condition")))
+          return()
+        }
+        alphalist[[i]] <- rel$alpha
+        omegalist[[i]] <- rel$omega
       }
       alphadf <- data.frame("factor" = unique(unlist(lapply(omegalist, names))))
       omegadf <- data.frame("factor" = unique(unlist(lapply(omegalist, names))))
@@ -1862,14 +1941,29 @@ checkLavaanModel <- function(model, availableVars) {
         }
       }
   } else {
+    if (isTRUE(options[["measurementModelReliability"]]))
+      reliabilitytab$addFootnote(gettext("Measurement-model reliability is not yet supported with grouping; default omega values are shown."))
+
     if (length(options[["models"]]) < 2) {
 
-      parTable <- lavaan::parameterTable(modelContainer[["results"]][["object"]][[1]])
+      fitObj   <- modelContainer[["results"]][["object"]][[1]]
+      parTable <- lavaan::parameterTable(fitObj)
       parTable <- parTable[parTable$op == "=~",]
       higherOrder <- unique(parTable[!parTable$rhs %in% names(dataset),]$lhs)
+      ordScale <- !isTRUE(lavaan::lavInspect(fitObj, "options")$categorical)
 
-      reliability_alpha          <- semTools::compRelSEM(modelContainer[["results"]][["object"]][[1]], tau.eq = TRUE, higher = higherOrder, return.total = TRUE)
-      reliability_omega          <- semTools::compRelSEM(modelContainer[["results"]][["object"]][[1]], tau.eq = FALSE, higher = higherOrder, return.total = TRUE)
+      rel <- try({
+        list(
+          alpha = semTools::compRelSEM(fitObj, tau.eq = TRUE,  higher = higherOrder, return.total = TRUE, simplify = TRUE, ord.scale = ordScale),
+          omega = semTools::compRelSEM(fitObj, tau.eq = FALSE, higher = higherOrder, return.total = TRUE, simplify = TRUE, ord.scale = ordScale)
+        )
+      })
+      if (inherits(rel, "try-error")) {
+        reliabilitytab$setError(conditionMessage(attr(rel, "condition")))
+        return()
+      }
+      reliability_alpha <- rel$alpha
+      reliability_omega <- rel$omega
       groups <- reliability_alpha[, "group"]
       reliability_alpha <- reliability_alpha[, -1]
       if(length(higherOrder > 0))
@@ -1886,14 +1980,24 @@ checkLavaanModel <- function(model, availableVars) {
       alphalist <- list()
       omegalist <- list()
       for (i in seq_along(options[["models"]])) {
-        parTable <- lavaan::parameterTable(modelContainer[["results"]][["object"]][[i]])
+        fitObj   <- modelContainer[["results"]][["object"]][[i]]
+        parTable <- lavaan::parameterTable(fitObj)
         parTable <- parTable[parTable$op == "=~",]
         higherOrder <- unique(parTable[!parTable$rhs %in% names(dataset),]$lhs)
+        ordScale <- !isTRUE(lavaan::lavInspect(fitObj, "options")$categorical)
 
-        reliability_alpha          <- semTools::compRelSEM(modelContainer[["results"]][["object"]][[i]], tau.eq = TRUE, higher = higherOrder, return.total = TRUE)
-        reliability_omega          <- semTools::compRelSEM(modelContainer[["results"]][["object"]][[i]], tau.eq = FALSE, higher = higherOrder, return.total = TRUE)
-        alphalist[[i]] <- reliability_alpha
-        omegalist[[i]] <- reliability_omega
+        rel <- try({
+          list(
+            alpha = semTools::compRelSEM(fitObj, tau.eq = TRUE,  higher = higherOrder, return.total = TRUE, simplify = TRUE, ord.scale = ordScale),
+            omega = semTools::compRelSEM(fitObj, tau.eq = FALSE, higher = higherOrder, return.total = TRUE, simplify = TRUE, ord.scale = ordScale)
+          )
+        })
+        if (inherits(rel, "try-error")) {
+          reliabilitytab$setError(conditionMessage(attr(rel, "condition")))
+          return()
+        }
+        alphalist[[i]] <- rel$alpha
+        omegalist[[i]] <- rel$omega
       }
       # for each group, find all variable names in each model
       groups <- unique(unlist(lapply(alphalist, function(reliability_alpha) { reliability_alpha[, "group"] })))
@@ -1938,14 +2042,16 @@ checkLavaanModel <- function(model, availableVars) {
 }
 
 .semHtmt <- function(modelContainer, dataset, options, ready) {
-  if (!options[["htmt"]] || !is.null(modelContainer[["htmt"]])) return()
+  if (!options[["heterotraitMonotraitRatio"]] || !is.null(modelContainer[["htmt"]])) return()
 
 
   htmt <- createJaspContainer()
   htmt$position <- 0.95
-  htmt$dependOn(c("htmt", "naAction", "models"))
+  htmt$dependOn(c("heterotraitMonotraitRatio", "naAction", "models"))
 
   modelContainer[["htmt"]] <- htmt
+
+  if (!ready || modelContainer$getError()) return()
 
   if (length(options[["models"]]) < 2) {
     .semHtmtTables(modelContainer[["results"]][["object"]][[1]], NULL, htmt, options, ready, dataset)
@@ -1972,20 +2078,34 @@ checkLavaanModel <- function(model, availableVars) {
   htmttab <- createJaspTable(title = title)
   htmttab$info <- gettext("Heterotrait-Monotrait (HTMT) ratio of correlations for assessing discriminant validity. HTMT values below 0.85 (conservative) or 0.90 (liberal) suggest that constructs are empirically distinct from each other.")
   htmtcont[["htmttab"]] <- htmttab
+  # attach the container now so a setError below still renders in the multi-model/grouped case
+  if (!is.null(model)) parentContainer[[model[["name"]]]] <- htmtcont
+
+  # parse the model syntax once (shared by the grouped and non-grouped branches)
+  lavOptions  <- .semOptionsToLavOptions(options, dataset)
+  syntax      <- if (is.null(model)) options[["models"]][[1]][["syntax"]] else model[["syntax"]]
+  parTable    <- lavaan::lavaanify(.semTranslateModel(syntax, dataset))
+  latents     <- parTable[parTable$op == "=~", ]
+  higherOrder <- unique(latents[!latents$rhs %in% names(dataset), ]$lhs)
+  lavmodel    <- parTable[!parTable$lhs %in% higherOrder, ]
+
+  # HTMT is a ratio between constructs, so it needs at least two latent variables
+  if (length(unique(latents$lhs)) < 2) {
+    htmttab$setError(gettext("The heterotrait-monotrait ratio requires a model with at least two latent variables."))
+    return()
+  }
 
   if (options[["group"]] == "") {
-    lavOptions <- .semOptionsToLavOptions(options, dataset)
-    lavmodel <- ifelse(is.null(model), .semTranslateModel(options[["models"]][[1]][["syntax"]], dataset), .semTranslateModel(model[["syntax"]], dataset))
 
-    parTable <- lavaan::lavaanify(lavmodel)
-    latents  <- parTable[parTable$op == "=~",]
-    higherOrder <- unique(latents[!latents$rhs %in% names(dataset),]$lhs)
-    lavmodel <- parTable[!parTable$lhs %in% higherOrder, ]
-
-    if (options[["dataType"]] == "raw") {
-      htmt_result <- semTools::htmt(model = lavmodel, data = dataset, missing = lavOptions[["missing"]])
-    } else {
-      htmt_result <- semTools::htmt(model = lavmodel, sample.cov = .semDataCovariance(dataset, model), missing = lavOptions[["missing"]])
+    htmt_result <- try(
+      if (options[["dataType"]] == "raw")
+        semTools::htmt(model = lavmodel, data = dataset, missing = lavOptions[["missing"]])
+      else
+        semTools::htmt(model = lavmodel, sample.cov = .semDataCovariance(dataset, model), missing = lavOptions[["missing"]])
+    )
+    if (isTryError(htmt_result)) {
+      htmttab$setError(.extractErrorMessage(htmt_result))
+      return()
     }
     htmt_result[upper.tri(htmt_result)] <- NA
 
@@ -1996,14 +2116,6 @@ checkLavaanModel <- function(model, availableVars) {
     htmttab$addRows(htmt_result, rowNames = colnames(htmt_result))
 
   } else {
-
-    lavOptions <- .semOptionsToLavOptions(options, dataset)
-    lavmodel <- ifelse(is.null(model), .semTranslateModel(options[["models"]][[1]][["syntax"]], dataset), .semTranslateModel(model[["syntax"]], dataset))
-
-    parTable <- lavaan::lavaanify(lavmodel)
-    latents  <- parTable[parTable$op == "=~",]
-    higherOrder <- unique(latents[!latents$rhs %in% names(dataset),]$lhs)
-    lavmodel <- parTable[!parTable$lhs %in% higherOrder, ]
 
     # prepare the columns
     lvNames <- unique(lavmodel[lavmodel$op == "=~", "lhs"])
@@ -2017,7 +2129,11 @@ checkLavaanModel <- function(model, availableVars) {
 
       dataset_per_group <- dataset[dataset[, options[["group"]]] == group, ]
 
-      htmt_result <- semTools::htmt(model = lavmodel, data = dataset_per_group, missing = lavOptions[["missing"]])
+      htmt_result <- try(semTools::htmt(model = lavmodel, data = dataset_per_group, missing = lavOptions[["missing"]]))
+      if (isTryError(htmt_result)) {
+        htmttab$setError(.extractErrorMessage(htmt_result))
+        return()
+      }
       htmt_result[upper.tri(htmt_result)] <- NA
       groupCol <- data.frame(group = c(group, rep(NA, nrow(htmt_result) - 1)))
       htmtFill <- cbind(groupCol, as.data.frame(htmt_result))
@@ -2027,7 +2143,6 @@ checkLavaanModel <- function(model, availableVars) {
     htmttab$setData(fillMat)
 
   }
-  if (!is.null(model)) parentContainer[[model[["name"]]]] <- htmtcont
 }
 
 .semMardiasCoefficient <- function(modelContainer, dataset, options, ready) {
@@ -2414,8 +2529,13 @@ checkLavaanModel <- function(model, availableVars) {
 
   if (!ready || !inherits(fit, "lavaan")) return()
 
-  # Extract modidffication indices:
-  semModIndResult <- lavaan:::modificationIndices(fit)
+  # Extract modification indices (can fail, e.g. singular information matrix in categorical/near-unidentified models)
+  semModIndResult <- try(lavaan::modificationIndices(fit), silent = TRUE)
+
+  if (isTryError(semModIndResult)) {
+    semModIndicesTable$setError(gettext("The modification indices could not be computed, most likely because the model's information matrix is singular. This often indicates that the model is not identified (for example, with ordinal indicators combined with (near-)collinear predictors)."))
+    return()
+  }
 
   ### Remove NA:
   semModIndResult <- semModIndResult[!is.na(semModIndResult$mi), , drop=FALSE]
@@ -2781,6 +2901,8 @@ checkLavaanModel <- function(model, availableVars) {
 
   # create a qgraph object using semplot
   po <- .lavToPlotObj(fit)
+  # Patch semPlot:::rtLayout to fix drop=FALSE bug with single-edge models (igraph >= 2.0)
+  .patchRtLayout()
   pp <- .suppressGrDevice(semPlot::semPaths(
     object         = po,
     layout         = "tree2",
