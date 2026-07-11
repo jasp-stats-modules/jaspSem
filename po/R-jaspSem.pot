@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: jaspSem 0.96.4\n"
-"POT-Creation-Date: 2026-05-09 03:54\n"
+"Project-Id-Version: jaspSem 0.97.1\n"
+"POT-Creation-Date: 2026-07-11 03:47\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -380,6 +380,18 @@ msgid "Factor loadings of the latent variable on its observed indicators. These 
 msgstr ""
 
 msgid "Indicator"
+msgstr ""
+
+msgid "Residual variances"
+msgstr ""
+
+msgid "Std. error"
+msgstr ""
+
+msgid "Predictor covariances"
+msgstr ""
+
+msgid "Variables"
 msgstr ""
 
 msgid "Proportion of variance explained in the latent variable (by the predictors) and in each indicator (by the latent variable)."
@@ -937,9 +949,6 @@ msgstr ""
 msgid "Estimated covariances between latent variables (~~ operator). These represent undirected associations between latent variables."
 msgstr ""
 
-msgid "Variables"
-msgstr ""
-
 msgid "Residual variances of the observed variables: the variance not explained by the latent variables. Negative residual variances (Heywood cases) may indicate model misspecification."
 msgstr ""
 
@@ -1018,6 +1027,9 @@ msgstr ""
 msgid "AVE"
 msgstr ""
 
+msgid "Average variance extracted requires a model with at least one latent variable."
+msgstr ""
+
 msgid "Reliability"
 msgstr ""
 
@@ -1030,10 +1042,19 @@ msgstr ""
 msgid "Coefficient ω"
 msgstr ""
 
+msgid "Reliability requires a model with at least one latent variable."
+msgstr ""
+
+msgid "Measurement-model reliability is not yet supported with grouping; default omega values are shown."
+msgstr ""
+
 msgid "Heterotrait-Monotrait Ratio"
 msgstr ""
 
 msgid "Heterotrait-Monotrait (HTMT) ratio of correlations for assessing discriminant validity. HTMT values below 0.85 (conservative) or 0.90 (liberal) suggest that constructs are empirically distinct from each other."
+msgstr ""
+
+msgid "The heterotrait-monotrait ratio requires a model with at least two latent variables."
 msgstr ""
 
 msgid "Mardia's Coefficients"
@@ -1121,6 +1142,9 @@ msgid "SEPC (all)"
 msgstr ""
 
 msgid "SEPC (nox)"
+msgstr ""
+
+msgid "The modification indices could not be computed, most likely because the model's information matrix is singular. This often indicates that the model is not identified (for example, with ordinal indicators combined with (near-)collinear predictors)."
 msgstr ""
 
 msgid "Sensitivity Analysis"

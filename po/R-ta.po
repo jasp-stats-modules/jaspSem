@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspSem 0.19.2\n"
-"POT-Creation-Date: 2026-05-09 03:54\n"
+"POT-Creation-Date: 2026-07-11 03:47\n"
 "PO-Revision-Date: 2026-03-22 08:09+0000\n"
 "Last-Translator: தமிழ்நேரம் <tamilneram247@gmail.com>\n"
 "Language-Team: Tamil <https://hosted.weblate.org/projects/jasp/jaspsem-r/ta/"
@@ -508,6 +508,19 @@ msgstr ""
 
 msgid "Indicator"
 msgstr "காட்டொளி"
+
+msgid "Residual variances"
+msgstr "மீதமுள்ள மாறுபாடுகள்"
+
+msgid "Std. error"
+msgstr "படிப்பு பிழை"
+
+#, fuzzy
+msgid "Predictor covariances"
+msgstr "காரணி கோவாரியன்ச்"
+
+msgid "Variables"
+msgstr "மாறிகள்"
 
 msgid ""
 "Proportion of variance explained in the latent variable (by the predictors) "
@@ -1227,9 +1240,6 @@ msgid ""
 "represent undirected associations between latent variables."
 msgstr ""
 
-msgid "Variables"
-msgstr "மாறிகள்"
-
 msgid ""
 "Residual variances of the observed variables: the variance not explained by "
 "the latent variables. Negative residual variances (Heywood cases) may "
@@ -1350,6 +1360,11 @@ msgstr ""
 msgid "AVE"
 msgstr "ஏவ்"
 
+msgid ""
+"Average variance extracted requires a model with at least one latent "
+"variable."
+msgstr ""
+
 msgid "Reliability"
 msgstr "நம்பகத்தன்மை"
 
@@ -1366,6 +1381,14 @@ msgstr "குணகங்கள் α"
 msgid "Coefficient ω"
 msgstr "குணகங்கள்"
 
+msgid "Reliability requires a model with at least one latent variable."
+msgstr ""
+
+msgid ""
+"Measurement-model reliability is not yet supported with grouping; default "
+"omega values are shown."
+msgstr ""
+
 msgid "Heterotrait-Monotrait Ratio"
 msgstr "ஈட்டோரோட்ரெய்ட்-மோனோட்ரேட் விகிதம்"
 
@@ -1373,6 +1396,11 @@ msgid ""
 "Heterotrait-Monotrait (HTMT) ratio of correlations for assessing "
 "discriminant validity. HTMT values below 0.85 (conservative) or 0.90 "
 "(liberal) suggest that constructs are empirically distinct from each other."
+msgstr ""
+
+msgid ""
+"The heterotrait-monotrait ratio requires a model with at least two latent "
+"variables."
 msgstr ""
 
 #, fuzzy
@@ -1505,6 +1533,13 @@ msgstr "SEPC (அனைத்தும்)"
 msgid "SEPC (nox)"
 msgstr "SEPC (NOX)"
 
+msgid ""
+"The modification indices could not be computed, most likely because the "
+"model's information matrix is singular. This often indicates that the model "
+"is not identified (for example, with ordinal indicators combined with "
+"(near-)collinear predictors)."
+msgstr ""
+
 #, fuzzy
 msgid "Sensitivity Analysis"
 msgstr "உணர்திறன் பகுப்பாய்வு"
@@ -1628,9 +1663,6 @@ msgstr "முதல்-வரிசை"
 #~ msgid "Parameter estimates"
 #~ msgstr "அளவுரு மதிப்பீடுகள்"
 
-#~ msgid "Std. error"
-#~ msgstr "படிப்பு பிழை"
-
 #~ msgid "Model fit"
 #~ msgstr "மாதிரி பொருத்தம்"
 
@@ -1639,12 +1671,6 @@ msgstr "முதல்-வரிசை"
 
 #~ msgid "Factor variances"
 #~ msgstr "காரணி மாறுபாடுகள்"
-
-#~ msgid "Factor covariances"
-#~ msgstr "காரணி கோவாரியன்ச்"
-
-#~ msgid "Residual variances"
-#~ msgstr "மீதமுள்ள மாறுபாடுகள்"
 
 #~ msgid "Total effects"
 #~ msgstr "மொத்த விளைவுகள்"

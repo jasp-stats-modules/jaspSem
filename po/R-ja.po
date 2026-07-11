@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: jaspSem 0.14.0\n"
-"POT-Creation-Date: 2026-05-09 03:54\n"
+"POT-Creation-Date: 2026-07-11 03:47\n"
 "PO-Revision-Date: 2026-05-21 04:11+0000\n"
 "Last-Translator: Akira Harada <momoldo@gmail.com>\n"
 "Language-Team: Japanese <https://hosted.weblate.org/projects/jasp/jaspsem-r/"
@@ -516,6 +516,19 @@ msgstr ""
 
 msgid "Indicator"
 msgstr "指標"
+
+msgid "Residual variances"
+msgstr "残差分散"
+
+msgid "Std. error"
+msgstr "標準誤差"
+
+#, fuzzy
+msgid "Predictor covariances"
+msgstr "因子の共分散"
+
+msgid "Variables"
+msgstr "変数"
 
 msgid ""
 "Proportion of variance explained in the latent variable (by the predictors) "
@@ -1241,9 +1254,6 @@ msgid ""
 "represent undirected associations between latent variables."
 msgstr ""
 
-msgid "Variables"
-msgstr "変数"
-
 msgid ""
 "Residual variances of the observed variables: the variance not explained by "
 "the latent variables. Negative residual variances (Heywood cases) may "
@@ -1364,6 +1374,11 @@ msgstr ""
 msgid "AVE"
 msgstr "AVE"
 
+msgid ""
+"Average variance extracted requires a model with at least one latent "
+"variable."
+msgstr ""
+
 msgid "Reliability"
 msgstr "信頼性"
 
@@ -1380,6 +1395,14 @@ msgstr "アルファ係数"
 msgid "Coefficient ω"
 msgstr "オメガ係数"
 
+msgid "Reliability requires a model with at least one latent variable."
+msgstr ""
+
+msgid ""
+"Measurement-model reliability is not yet supported with grouping; default "
+"omega values are shown."
+msgstr ""
+
 msgid "Heterotrait-Monotrait Ratio"
 msgstr "Heterotrait-monotrait 比"
 
@@ -1387,6 +1410,11 @@ msgid ""
 "Heterotrait-Monotrait (HTMT) ratio of correlations for assessing "
 "discriminant validity. HTMT values below 0.85 (conservative) or 0.90 "
 "(liberal) suggest that constructs are empirically distinct from each other."
+msgstr ""
+
+msgid ""
+"The heterotrait-monotrait ratio requires a model with at least two latent "
+"variables."
 msgstr ""
 
 #, fuzzy
@@ -1515,6 +1543,13 @@ msgstr "spec(all)"
 msgid "SEPC (nox)"
 msgstr "sept(nox)"
 
+msgid ""
+"The modification indices could not be computed, most likely because the "
+"model's information matrix is singular. This often indicates that the model "
+"is not identified (for example, with ordinal indicators combined with "
+"(near-)collinear predictors)."
+msgstr ""
+
 #, fuzzy
 msgid "Sensitivity Analysis"
 msgstr "感度分析"
@@ -1637,9 +1672,6 @@ msgstr "一次"
 #~ msgid "Parameter estimates"
 #~ msgstr "パラメータ推定"
 
-#~ msgid "Std. error"
-#~ msgstr "標準誤差"
-
 #~ msgid "Model fit"
 #~ msgstr "モデルフィット"
 
@@ -1648,12 +1680,6 @@ msgstr "一次"
 
 #~ msgid "Factor variances"
 #~ msgstr "因子の分散"
-
-#~ msgid "Factor covariances"
-#~ msgstr "因子の共分散"
-
-#~ msgid "Residual variances"
-#~ msgstr "残差分散"
 
 #~ msgid "Total effects"
 #~ msgstr "全体効果"

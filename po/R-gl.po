@@ -6,7 +6,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2026-05-09 03:54\n"
+"POT-Creation-Date: 2026-07-11 03:47\n"
 "PO-Revision-Date: 2026-06-05 11:09+0000\n"
 "Last-Translator: ecadrian <ecadrian@hotmail.com>\n"
 "Language-Team: Galician <https://hosted.weblate.org/projects/jasp/jaspsem-r/"
@@ -593,6 +593,19 @@ msgstr ""
 msgid "Indicator"
 msgstr "Indicador"
 
+msgid "Residual variances"
+msgstr "Varianzas dos erros"
+
+msgid "Std. error"
+msgstr "Erro padrón"
+
+#, fuzzy
+msgid "Predictor covariances"
+msgstr "Covarianzas dos Factores"
+
+msgid "Variables"
+msgstr "Variables"
+
 msgid ""
 "Proportion of variance explained in the latent variable (by the predictors) "
 "and in each indicator (by the latent variable)."
@@ -604,8 +617,8 @@ msgid ""
 "Path diagram of the MIMIC model showing observed predictors (causes), the "
 "latent variable, and its observed indicators."
 msgstr ""
-"Diagrama de ruta do modelo MIMIC que amosa os preditores observados (causas)"
-", a variable latente e os seus indicadores observados."
+"Diagrama de ruta do modelo MIMIC que amosa os preditores observados "
+"(causas), a variable latente e os seus indicadores observados."
 
 msgid "Model plot not available with ordinal variables"
 msgstr "A gráfica do modelo non está dispoñible con variables ordinais"
@@ -1004,8 +1017,8 @@ msgid ""
 "0.15 (medium), 0.35 (large)."
 msgstr ""
 "Coeficientes internos das rutas do modelo entre nocións. A magnitude f² do "
-"efecto indica o impacto substancial de eliminar cada preditor: 0.02 (pequeno)"
-", 0.15 (medio), 0.35 (grande)."
+"efecto indica o impacto substancial de eliminar cada preditor: 0.02 "
+"(pequeno), 0.15 (medio), 0.35 (grande)."
 
 msgid "Outcome"
 msgstr "Resultado"
@@ -1218,7 +1231,8 @@ msgid "Observed Construct Correlation Matrix"
 msgstr "Matriz de correlacións de nocións observadas"
 
 msgid "Sample correlation matrix of the composite construct scores."
-msgstr "Matriz de correlacións mostrais das puntuacións combinadas das nocións."
+msgstr ""
+"Matriz de correlacións mostrais das puntuacións combinadas das nocións."
 
 msgid "Implied Construct Correlation Matrix"
 msgstr "Matriz de correlacións de nocións implicadas"
@@ -1427,9 +1441,6 @@ msgstr ""
 "Covarianzas estimadas entre variables latentes (~~ operador). Estas "
 "representan as asociacións indirectas entre variables latentes."
 
-msgid "Variables"
-msgstr "Variables"
-
 msgid ""
 "Residual variances of the observed variables: the variance not explained by "
 "the latent variables. Negative residual variances (Heywood cases) may "
@@ -1527,9 +1538,9 @@ msgid ""
 "these should be interpreted cautiously."
 msgstr ""
 "Índices de axuste do modelo que inclúen índices progresivos (IAC, ITL, IAN), "
-"índices absolutos (REACM, RECMS, IBA), e criterios de información (CIA, CIB)"
-". Directrices habituais: IAC/ITL > .95, REACM < .06, RECMS < .08 indican bo "
-"axuste, aínda que estes deben interpretarse con precaución."
+"índices absolutos (REACM, RECMS, IBA), e criterios de información (CIA, "
+"CIB). Directrices habituais: IAC/ITL > .95, REACM < .06, RECMS < .08 indican "
+"bo axuste, aínda que estes deben interpretarse con precaución."
 
 msgid "%s Fit indices are based on the scaled test statistic."
 msgstr "%s Os indicadores do axuste baséanse no estatístico de proba escalado."
@@ -1583,6 +1594,11 @@ msgstr ""
 msgid "AVE"
 msgstr "VME (AVE)"
 
+msgid ""
+"Average variance extracted requires a model with at least one latent "
+"variable."
+msgstr ""
+
 msgid "Reliability"
 msgstr "Fiabilidade"
 
@@ -1604,6 +1620,14 @@ msgstr "Coeficiente α"
 msgid "Coefficient ω"
 msgstr "Coeficiente ω"
 
+msgid "Reliability requires a model with at least one latent variable."
+msgstr ""
+
+msgid ""
+"Measurement-model reliability is not yet supported with grouping; default "
+"omega values are shown."
+msgstr ""
+
 msgid "Heterotrait-Monotrait Ratio"
 msgstr "Cociente Heterotrazo-Monotrazo"
 
@@ -1616,6 +1640,11 @@ msgstr ""
 "validez discriminante. Os valores de HTMT por debaixo de 0.85 (conservador) "
 "ou 0.90 (libre) suxiren que as nocións son empiricamente distintas unhas de "
 "outras."
+
+msgid ""
+"The heterotrait-monotrait ratio requires a model with at least two latent "
+"variables."
+msgstr ""
 
 msgid "Mardia's Coefficients"
 msgstr "Coeficientes de Mardia"
@@ -1766,6 +1795,13 @@ msgstr "CAPS (todas)"
 msgid "SEPC (nox)"
 msgstr "CAPS (nox)"
 
+msgid ""
+"The modification indices could not be computed, most likely because the "
+"model's information matrix is singular. This often indicates that the model "
+"is not identified (for example, with ordinal indicators combined with "
+"(near-)collinear predictors)."
+msgstr ""
+
 msgid "Sensitivity Analysis"
 msgstr "Análise de Sensibilidade"
 
@@ -1898,9 +1934,6 @@ msgstr "Primeira orde"
 #~ msgid "Parameter estimates"
 #~ msgstr "Estimacións dos parámetros"
 
-#~ msgid "Std. error"
-#~ msgstr "Erro padrón"
-
 #~ msgid "Model fit"
 #~ msgstr "Axuste do modelo"
 
@@ -1909,12 +1942,6 @@ msgstr "Primeira orde"
 
 #~ msgid "Factor variances"
 #~ msgstr "Varianzas dos Factores"
-
-#~ msgid "Factor covariances"
-#~ msgstr "Covarianzas dos Factores"
-
-#~ msgid "Residual variances"
-#~ msgstr "Varianzas dos erros"
 
 #~ msgid "Total effects"
 #~ msgstr "Efectos totais"

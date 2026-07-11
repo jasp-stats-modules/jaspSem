@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: R 3.6.1\n"
 "Report-Msgid-Bugs-To: github.com/jasp-stats/jasp-issues/issues\n"
-"POT-Creation-Date: 2026-05-09 03:54\n"
+"POT-Creation-Date: 2026-07-11 03:47\n"
 "PO-Revision-Date: 2026-02-02 03:40+0000\n"
 "Last-Translator: Johannes Keyser <joke@fsfe.org>\n"
 "Language-Team: German <https://hosted.weblate.org/projects/jasp/jaspsem-r/de/"
@@ -514,6 +514,19 @@ msgstr ""
 
 msgid "Indicator"
 msgstr "Indikator"
+
+msgid "Residual variances"
+msgstr "Residualvarianzen"
+
+msgid "Std. error"
+msgstr "Std.-Fehler"
+
+#, fuzzy
+msgid "Predictor covariances"
+msgstr "Faktorkovarianzen"
+
+msgid "Variables"
+msgstr "Variablen"
 
 msgid ""
 "Proportion of variance explained in the latent variable (by the predictors) "
@@ -1248,9 +1261,6 @@ msgid ""
 "represent undirected associations between latent variables."
 msgstr ""
 
-msgid "Variables"
-msgstr "Variablen"
-
 msgid ""
 "Residual variances of the observed variables: the variance not explained by "
 "the latent variables. Negative residual variances (Heywood cases) may "
@@ -1371,6 +1381,11 @@ msgstr ""
 msgid "AVE"
 msgstr "DEV"
 
+msgid ""
+"Average variance extracted requires a model with at least one latent "
+"variable."
+msgstr ""
+
 msgid "Reliability"
 msgstr "Reliabilität"
 
@@ -1387,6 +1402,14 @@ msgstr "Koeffizient α"
 msgid "Coefficient ω"
 msgstr "Koeffizient ω"
 
+msgid "Reliability requires a model with at least one latent variable."
+msgstr ""
+
+msgid ""
+"Measurement-model reliability is not yet supported with grouping; default "
+"omega values are shown."
+msgstr ""
+
 msgid "Heterotrait-Monotrait Ratio"
 msgstr "Heterotrait-Monotrait-Verhältnis"
 
@@ -1394,6 +1417,11 @@ msgid ""
 "Heterotrait-Monotrait (HTMT) ratio of correlations for assessing "
 "discriminant validity. HTMT values below 0.85 (conservative) or 0.90 "
 "(liberal) suggest that constructs are empirically distinct from each other."
+msgstr ""
+
+msgid ""
+"The heterotrait-monotrait ratio requires a model with at least two latent "
+"variables."
 msgstr ""
 
 #, fuzzy
@@ -1531,6 +1559,13 @@ msgstr "sepc (all)"
 msgid "SEPC (nox)"
 msgstr "sepc (all)"
 
+msgid ""
+"The modification indices could not be computed, most likely because the "
+"model's information matrix is singular. This often indicates that the model "
+"is not identified (for example, with ordinal indicators combined with "
+"(near-)collinear predictors)."
+msgstr ""
+
 #, fuzzy
 msgid "Sensitivity Analysis"
 msgstr "Sensitivitätsanalyse"
@@ -1656,9 +1691,6 @@ msgstr "erster Ordnung"
 #~ msgid "Parameter estimates"
 #~ msgstr "Parameterschätzungen"
 
-#~ msgid "Std. error"
-#~ msgstr "Std.-Fehler"
-
 #~ msgid "Model fit"
 #~ msgstr "Modell-Anpassung"
 
@@ -1667,12 +1699,6 @@ msgstr "erster Ordnung"
 
 #~ msgid "Factor variances"
 #~ msgstr "Faktorvarianzen"
-
-#~ msgid "Factor covariances"
-#~ msgstr "Faktorkovarianzen"
-
-#~ msgid "Residual variances"
-#~ msgstr "Residualvarianzen"
 
 #~ msgid "Total effects"
 #~ msgstr "Gesamte Effekte"
