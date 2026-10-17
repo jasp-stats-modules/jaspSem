@@ -802,7 +802,6 @@ msgctxt "SEM|"
 msgid "Maximum number of iterations"
 msgstr "Maximale Anzahl von Iterationen"
 
-#, fuzzy
 msgctxt "Advanced|"
 msgid "Advanced"
 msgstr "Weiteres"
@@ -926,7 +925,6 @@ msgctxt "LatentGrowthCurve|"
 msgid "Latents"
 msgstr "Latente"
 
-#, fuzzy
 msgctxt "LatentGrowthCurve|"
 msgid "Except exogenous covariates"
 msgstr "Bis auf exogene Kovariaten"
@@ -939,7 +937,6 @@ msgctxt "MediationAnalysis|"
 msgid "Latents"
 msgstr "Latente"
 
-#, fuzzy
 msgctxt "MediationAnalysis|"
 msgid "Except exogenous covariates"
 msgstr "Bis auf exogene Kovariaten"
@@ -952,12 +949,10 @@ msgctxt "Mimic|"
 msgid "Latents"
 msgstr "Latente"
 
-#, fuzzy
 msgctxt "Mimic|"
 msgid "Except exogenous covariates"
 msgstr "Bis auf exogene Kovariaten"
 
-#, fuzzy
 msgctxt "SEM|"
 msgid "Mean structure"
 msgstr "Mittelwertstruktur"
@@ -982,7 +977,6 @@ msgctxt "SEM|"
 msgid "Residual single indicator omitted"
 msgstr "Residualvarianz des Einzelindikators ausgelassen"
 
-#, fuzzy
 msgctxt "SEM|"
 msgid "Residual variances included"
 msgstr "Residualvarianzen einbezogen"
@@ -992,7 +986,6 @@ msgctxt "SEM|"
 msgid "Exogenous latents correlated"
 msgstr "Exogene Latente korreliert"
 
-#, fuzzy
 msgctxt "SEM|"
 msgid "Dependent variables correlated"
 msgstr "Abhängige Variablen korreliert"
@@ -1177,15 +1170,15 @@ msgstr "Maximum-Likelihood-Schätzer"
 
 msgctxt "Advanced|"
 msgid "Generalized Least Squares estimator"
-msgstr "Generalized-Least-Squares-Schätzer (GLS)"
+msgstr "Verallgemeinerter Kleinste-Quadrate-Schätzer"
 
 msgctxt "Advanced|"
 msgid "Weighted Least Squares estimator"
-msgstr "Weighted-Least-Squares-Schätzer (WLS)"
+msgstr "Gewichteter Kleinste-Quadrate-Schätzer"
 
 msgctxt "Advanced|"
 msgid "Unweighted Least Squares estimator"
-msgstr "Unweighted-Least-Squares-Schätzer (ULS)"
+msgstr "Ungewichteter Kleinste-Quadrate-Schätzer"
 
 msgctxt "Advanced|"
 msgid "Diagonally Weighted Least Squares estimator"
@@ -1398,7 +1391,6 @@ msgctxt "PLSSEM|"
 msgid "Bootstrap samples"
 msgstr "Bootstrap-Stichproben"
 
-#, fuzzy
 msgctxt "PLSSEM|"
 msgid "Significance level"
 msgstr "Signifikanzniveau"
@@ -1407,7 +1399,6 @@ msgctxt "PLSSEM|"
 msgid "Saturated structural model"
 msgstr "Gesättigtes Strukturmodell"
 
-#, fuzzy
 msgctxt "LatentGrowthCurve|"
 msgid "Show parameter estimates"
 msgstr "Parameterschätzungen anzeigen"
@@ -1416,17 +1407,14 @@ msgctxt "Description|"
 msgid "MNLFA"
 msgstr "MNLFA"
 
-#, fuzzy
 msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "Loadings"
 msgstr "Ladungen"
 
-#, fuzzy
 msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "Intercepts"
 msgstr "Konstanten"
 
-#, fuzzy
 msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "Residual variances"
 msgstr "Residualvarianzen"
@@ -1435,7 +1423,6 @@ msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "Variances"
 msgstr "Varianzen"
 
-#, fuzzy
 msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "Means"
 msgstr "Mittelwerte"
@@ -1516,7 +1503,6 @@ msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "Include Individual Moderations"
 msgstr "Individuelle Moderationen einbeziehen"
 
-#, fuzzy
 msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "Indicators"
 msgstr "Indikatoren"
@@ -1529,7 +1515,6 @@ msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "Display Plot"
 msgstr "Grafik anzeigen"
 
-#, fuzzy
 msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "Output Options"
 msgstr "Ausgabeoptionen"
@@ -1894,7 +1879,6 @@ msgstr ""
 "Für jede Invarianzebene festlegen, welche einzelnen Messparameter auf "
 "Moderationseffekte getestet werden sollen."
 
-#, fuzzy
 msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "Estimation Options"
 msgstr "Schätzoptionen"
@@ -1903,7 +1887,6 @@ msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "Indicator preprocessing"
 msgstr "Indikatorvorverarbeitung"
 
-#, fuzzy
 msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "None"
 msgstr "Keine"
@@ -1956,7 +1939,6 @@ msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "Display latent factor covariance estimates."
 msgstr "Kovarianzschätzungen latenter Faktoren anzeigen."
 
-#, fuzzy
 msgctxt "ModeratedNonLinearFactorAnalysis|"
 msgid "Show warnings"
 msgstr "Warnungen anzeigen"
